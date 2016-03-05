@@ -37,6 +37,7 @@
  */
 - (void)tabBar:(TabBar *)tabBar didSelectItemAtIndex:(NSInteger)index;
 
+- (void)tabBar:(TabBar *)tabBar didTouchDown:(NSInteger)index;
 @end
 
 @interface TabBar : UIView
@@ -44,24 +45,25 @@
 /**
  * The tab bar’s delegate object.
  */
-@property (nonatomic, weak) id <TabBarDelegate> delegate;
+@property(nonatomic, weak) id <TabBarDelegate> delegate;
 
 /**
  * The items displayed on the tab bar.
  */
-@property (nonatomic, copy) NSArray *items;
+@property(nonatomic, copy) NSArray *items;
 
 /**
  * The currently selected item on the tab bar.
  */
-@property (nonatomic, weak) TabBarItem *selectedItem;
+@property(nonatomic, weak) TabBarItem *selectedItem;
+
 - (void)setSelectedIndex:(int)index;
 
 /**
  * backgroundView stays behind tabBar's items. If you want to add additional views, 
  * add them as subviews of backgroundView.
  */
-@property (nonatomic, readonly) UIView *backgroundView;
+@property(nonatomic, readonly) UIView *backgroundView;
 
 /*
  * contentEdgeInsets can be used to center the items in the middle of the tabBar.
@@ -81,7 +83,7 @@
 /*
  * Enable or disable tabBar translucency. Default is NO.
  */
-@property (nonatomic, getter=isTranslucent) BOOL translucent;
+@property(nonatomic, getter=isTranslucent) BOOL translucent;
 
 @end
 

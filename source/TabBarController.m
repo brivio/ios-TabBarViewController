@@ -272,6 +272,12 @@
     }
 }
 
+- (void)tabBar:(TabBar *)tabBar didTouchDown:(NSInteger)index {
+    if ([[self delegate] respondsToSelector:@selector(tabBarController:needRefresh:)] && self.selectedIndex == index) {
+        [[self delegate] tabBarController:self needRefresh:index];
+    }
+}
+
 @end
 
 #pragma mark - UIViewController+TabBarControllerItem
@@ -299,7 +305,7 @@
 - (TabBarItem *)rdv_tabBarItem {
     TabBarController *tabBarController = [self rdv_tabBarController];
     NSInteger index = [tabBarController indexForViewController:self];
-    return [[[tabBarController tabBar] items] objectAtIndex:index];
+    return [[tabBarController tabBar] items][index];
 }
 
 - (void)rdv_setTabBarItem:(TabBarItem *)tabBarItem {

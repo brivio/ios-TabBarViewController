@@ -131,17 +131,17 @@
 #pragma mark - Item selection
 
 - (void)tabBarItemWasSelected:(id)sender {
+    NSInteger index = [self.items indexOfObject:sender];
+    [[self delegate] tabBar:self didTouchDown:index];
+
     if ([[self delegate] respondsToSelector:@selector(tabBar:shouldSelectItemAtIndex:)]) {
-        NSInteger index = [self.items indexOfObject:sender];
         if (![[self delegate] tabBar:self shouldSelectItemAtIndex:index]) {
             return;
         }
     }
-
     [self setSelectedItem:sender];
-
     if ([[self delegate] respondsToSelector:@selector(tabBar:didSelectItemAtIndex:)]) {
-        NSInteger index = [self.items indexOfObject:self.selectedItem];
+        index = [self.items indexOfObject:self.selectedItem];
         [[self delegate] tabBar:self didSelectItemAtIndex:index];
     }
 }
@@ -157,7 +157,7 @@
 }
 
 - (void)setSelectedIndex:(int)index {
-    TabBarItem *selectedItem = [self.items objectAtIndex:index];
+    TabBarItem *selectedItem = self.items[index];
     if (selectedItem == _selectedItem) {
         return;
     }

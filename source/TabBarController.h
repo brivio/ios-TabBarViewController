@@ -31,37 +31,38 @@
 /**
  * The tab bar controller’s delegate object.
  */
-@property (nonatomic, weak) id<TabBarControllerDelegate> delegate;
+@property(nonatomic, weak) id <TabBarControllerDelegate> delegate;
 
 /**
  * An array of the root view controllers displayed by the tab bar interface.
  */
-@property (nonatomic, copy) IBOutletCollection(UIViewController) NSArray *viewControllers;
+@property(nonatomic, copy) IBOutletCollection(UIViewController) NSArray *viewControllers;
 
 /**
  * The tab bar view associated with this controller. (read-only)
  */
-@property (nonatomic, readonly) TabBar *tabBar;
+@property(nonatomic, readonly) TabBar *tabBar;
 
 /**
  * The view controller associated with the currently selected tab item.
  */
-@property (nonatomic, weak) UIViewController *selectedViewController;
+@property(nonatomic, weak) UIViewController *selectedViewController;
 
 /**
  * The index of the view controller associated with the currently selected tab item.
  */
-@property (nonatomic) NSUInteger selectedIndex;
+@property(nonatomic) NSUInteger selectedIndex;
 
 /**
  * A Boolean value that determines whether the tab bar is hidden.
  */
-@property (nonatomic, getter=isTabBarHidden) BOOL tabBarHidden;
+@property(nonatomic, getter=isTabBarHidden) BOOL tabBarHidden;
 
 /**
  * Changes the visibility of the tab bar.
  */
 - (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated;
+
 - (void)setViewControllers:(NSArray *)viewControllers withTitles:(NSArray *)titles;
 
 @end
@@ -73,13 +74,12 @@
  */
 - (BOOL)tabBarController:(TabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController;
 
-
-
 /**
  * Tells the delegate that the user selected an item in the tab bar.
  */
 - (void)tabBarController:(TabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController;
 
+- (void)tabBarController:(TabBarController *)tabBarController needRefresh:(NSInteger)index;
 @end
 
 @interface UIViewController (TabBarControllerItem)
