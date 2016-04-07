@@ -142,7 +142,7 @@
                                                  attributes:@{NSFontAttributeName: titleAttributes[NSFontAttributeName]}
                                                     context:nil].size;
             
-            imageStartingY = roundf((frameSize.height - imageSize.height - titleSize.height) / 2);
+            imageStartingY = roundf((frameSize.height - imageSize.height - titleSize.height) / 2+3);
             
             [image drawInRect:CGRectMake(roundf(frameSize.width / 2 - imageSize.width / 2) +
                                          _imagePositionAdjustment.horizontal,
